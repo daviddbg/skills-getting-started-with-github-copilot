@@ -5,11 +5,15 @@ A super simple FastAPI application that allows students to view and sign up
 for extracurricular activities at Mergington High School.
 """
 
-from fastapi import FastAPI, HTTPException
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
+import importlib
 import os
 from pathlib import Path
+
+fastapi = importlib.import_module("fastapi")
+FastAPI = fastapi.FastAPI
+HTTPException = fastapi.HTTPException
+StaticFiles = importlib.import_module("fastapi.staticfiles").StaticFiles
+RedirectResponse = importlib.import_module("fastapi.responses").RedirectResponse
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
